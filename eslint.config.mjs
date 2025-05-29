@@ -10,5 +10,6 @@ export default defineConfig([
   { rules: {
     "no-useless-catch": "off",
     "no-unused-vars": "warn",
+    "no-empty": "warn",
   },}
 ]);

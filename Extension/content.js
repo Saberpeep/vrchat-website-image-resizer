@@ -1,8 +1,10 @@
 (() => {
 
     const modalSelector = ".modal.show .modal-body div";
+    const uploadPagePath = "/home/uploadPhoto";
+    const uploadPageSelector = `#app .home-content`;
     const markerClass = "lackofbindings";
-    let modal, origInput, newInput;
+    let container, origInput, newInput;
     const dataUrls = [];
 
     function imageLoadUrlAsync(img, url)
@@ -134,14 +136,21 @@
     function tryAddButton()
     {
         try {
-            modal = document.querySelector(modalSelector);
-            if (!modal) return;
+            // Look for input on upload modal
+            container = document.querySelector(modalSelector);
+            if(!container && new URL(document.URL).pathname.startsWith(uploadPagePath))
+            {
+                // If on upload page, look for input on main page
+                container = document.querySelector(uploadPageSelector);
+                console.log("On Upload Page, container:", container);
+            }
+            if(!container) return;
     
-            origInput = modal.querySelector(`input:not(.${markerClass})`);
+            origInput = container.querySelector(`input[type="file"]:not(.${markerClass})`);
             if(!origInput) return;
             origInput.style.setProperty("display", "none");
     
-            newInput = modal.querySelector(`input.${markerClass}`);
+            newInput = container.querySelector(`input.${markerClass}`);
             if(newInput) return;
             newInput = document.createElement("input");
             newInput.type = "file";
