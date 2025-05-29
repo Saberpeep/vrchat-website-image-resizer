@@ -1,4 +1,4 @@
-# VRChat Image Resizer
+# VRChat Website Image Resizer
 
 Browser extension to automatically resize images to be <= 2048px before before uploading to VRChat. 
 
