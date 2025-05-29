@@ -52,6 +52,7 @@
     {
         try {
             var img = new Image();
+            img.crossOrigin = "Anonymous";
 
             await imageLoadUrlAsync(img, dataUrl);
 
