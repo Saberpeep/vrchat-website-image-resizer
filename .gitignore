@@ -1,0 +1,6 @@
+*.zip
+*.xpi
+/Store Assets/
+package.json
+package-lock.json
+/node_modules/
